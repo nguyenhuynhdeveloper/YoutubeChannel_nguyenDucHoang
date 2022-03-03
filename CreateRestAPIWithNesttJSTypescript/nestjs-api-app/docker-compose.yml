@@ -1,0 +1,16 @@
+#docker compose up dev-db -d
+version: '3.8'
+services:
+  dev-db:
+    image: 'postgres:14.2'
+    container_name: nestjs-postgres-container
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 'Abc123456789@'
+      POSTGRES_DB: myDB
+    networks:
+      - nguyenduchoang
+networks:
+  nguyenduchoang:
