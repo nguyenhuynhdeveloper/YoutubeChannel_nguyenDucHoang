@@ -9,7 +9,7 @@
     "db:deploy": "npx prisma migrate deploy",
     "db:remove": "docker compose rm dev-db -s -f -v",
     "db:up": "docker compose up dev-db -d",
-    "db:restart": "yarn db:remove && yarn db:up && timeout 5 && yarn db:deploy",
+    "db:restart": "yarn db:remove && yarn db:up && sleep 5 && yarn db:deploy",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
