@@ -1,4 +1,4 @@
-import { Controller, Post, Req, Body } from "@nestjs/common";
+import { Controller, Post, Req, Body, HttpCode, HttpStatus } from "@nestjs/common";
 import { AuthenticationService } from "./authentication.service";
 import { Request } from "express";
 import { AuthenticationDto } from "./dto";
@@ -9,7 +9,9 @@ export class AuthenticationController {
     }
     //endpoints
     //POST authentication/login
+    
     @Post('login')
+    @HttpCode(HttpStatus.OK)
     login(@Body() dto: AuthenticationDto){
         return this.authenticationService.login(dto)        
     }
@@ -21,6 +23,7 @@ export class AuthenticationController {
         return this.authenticationService.register()
     }
     */    
+    
     register(
         @Body() dto: AuthenticationDto,
         // @Body('email') email: string, 

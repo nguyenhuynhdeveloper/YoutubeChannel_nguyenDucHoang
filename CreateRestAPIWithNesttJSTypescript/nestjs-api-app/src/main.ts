@@ -43,6 +43,16 @@ try to decode using http://jwt.io
 Add strategy, then 
 nest g controller user --no-spec 
 
+send Register again, return 201 !
+
+end to end testing
+yarn add -D pactum
+yarn test:e2e
+open package.json, add "--watch --no-cache" to "test:e2e"
+
+yarn add -D dotenv-cli 
+create file .env.test
+
  */
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)

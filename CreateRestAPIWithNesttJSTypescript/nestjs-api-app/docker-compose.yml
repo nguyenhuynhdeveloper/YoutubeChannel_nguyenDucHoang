@@ -12,5 +12,16 @@ services:
       POSTGRES_DB: myDB
     networks:
       - nguyenduchoang
+  test-db:
+    image: 'postgres:14.2'
+    container_name: nestjs-postgres-test-container
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 'Abc123456789@'
+      POSTGRES_DB: myDB
+    networks:
+      - nguyenduchoang
 networks:
   nguyenduchoang:
