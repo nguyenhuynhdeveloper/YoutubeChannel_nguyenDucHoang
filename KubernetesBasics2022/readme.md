@@ -74,6 +74,50 @@ Confirm that the app is still running:
 kubectl exec -ti $POD_NAME -- curl localhost:8080
 kubectl exec -ti $POD_NAME -- ls -la
 
+Running Multiple Instances of Your App
+Scaling = changing the number of replicas in a Deployment
+Scaling will increase the number of Pods
+kubectl get deployments
+To see the ReplicaSet created by the Deployment:
+kubectl get rs
+ReplicaSet's format: [DEPLOYMENT-NAME]-[RANDOM-STRING]
+DESIRED = desired number of replicas of the application
+CURRENT = how many replicas are currently running
+how many replicas are currently running
+Let’s scale the Deployment to 4 replicas
+kubectl scale deployments/kubernetes-bootcamp --replicas=4
+Now there are 4 pods:
+kubectl get pods -o wide
+kubectl describe deployments/kubernetes-bootcamp
+
+To find out the exposed IP and Port:
+kubectl describe services/kubernetes-bootcamp
+Create an environment variable called NODE_PORT:
+export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+echo NODE_PORT=$NODE_PORT
+Send multiple request and check:
+curl $(minikube ip):$NODE_PORT
+
+Performing a Rolling Update
+Developers are expected to deploy new versions of them several times a day
+updated app has new ip address
+kubectl get deployments
+kubectl get pods
+To view the current image version of the app:
+kubectl describe pods
+And look for the Image field
+To update the image of the application to version 2
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+
+https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-interactive/
+
+
+
+
+
+
+
+
 
 
 
