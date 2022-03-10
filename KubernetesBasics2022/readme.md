@@ -38,7 +38,51 @@ start a bash session in the Pod’s container:
 kubectl exec -ti $POD_NAME -- bash
 cat server.js
 Check that the application is up by running a curl command:
-https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
+Services enable a loose coupling between dependent Pods
+kubectl get services
+We have a Service called kubernetes that is created by default 
+To create a new service and expose it to external traffic:
+kubectl get deployments
+kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+kubectl get services
+To find out what port was opened externally:
+kubectl describe services/kubernetes-bootcamp
+Create an environment variable called NODE_PORT that has the value of the Node port assigned:
+export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+echo NODE_PORT=$NODE_PORT
+Test that the app is exposed outside of the cluster:
+curl $(minikube ip):$NODE_PORT
+You can see the name of the label:
+kubectl describe deployment
+see "Labels"
+Let’s use this label to query our list of Pods:
+kubectl get services -l app=kubernetes-bootcamp
+Get the name of the Pod and store it in the POD_NAME environment variable:
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+echo Name of the Pod: $POD_NAME
+To apply a new label:
+kubectl label pods $POD_NAME version=v1
+kubectl describe pods $POD_NAME
+we can query now the list of pods using the new label:
+kubectl get pods -l version=v1
+To delete Services:
+kubectl delete service -l app=kubernetes-bootcamp
+kubectl get services
+This proves that the app is not reachable anymore from outside of the cluster:
+curl $(minikube ip):$NODE_PORT
+Confirm that the app is still running:
+kubectl exec -ti $POD_NAME -- curl localhost:8080
+kubectl exec -ti $POD_NAME -- ls -la
+
+
+
+
+
+
+
+
+
+
 
 
 
