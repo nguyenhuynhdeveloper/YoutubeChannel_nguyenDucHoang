@@ -1,5 +1,5 @@
 minikube version
-You now have a running Kubernetes cluster
+Start a Kubernetes cluster
 minikube start
 kubectl version
 kubectl cluster-info
@@ -97,6 +97,7 @@ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(i
 echo NODE_PORT=$NODE_PORT
 Send multiple request and check:
 curl $(minikube ip):$NODE_PORT
+Every time you run the curl command, you will hit a different Pod
 
 Performing a Rolling Update
 Developers are expected to deploy new versions of them several times a day
@@ -108,8 +109,15 @@ kubectl describe pods
 And look for the Image field
 To update the image of the application to version 2
 kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+Verify an update:
+kubectl describe services/kubernetes-bootcamp
+export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+echo NODE_PORT=$NODE_PORT
+Next, do a curl to the the exposed IP and port:
+curl $(minikube ip):$NODE_PORT
+To roll back the deployment to your last working version, use the rollout undo command:
+kubectl rollout undo deployments/kubernetes-bootcamp
 
-https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-interactive/
 
 
 
