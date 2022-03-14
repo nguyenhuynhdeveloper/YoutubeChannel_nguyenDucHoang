@@ -62,6 +62,7 @@ docker push sunlight4d/node-mysql-image:v1.0.0
 
 Create container from your "custom image":
 
+
 docker run -dp 8002:8000 \
 --name node-mysql-container \
 -w /app -v "$(pwd):/app" \
@@ -77,4 +78,21 @@ Update version:
 docker tag node-mysql-image:latest sunlight4d/node-mysql-image:v1.0.1
 docker push sunlight4d/node-mysql-image:v1.0.1
 
-How to update code ?
+Create container with params/configurations
+Put all params/configurations into a .yml file => Docker compose
+docker-compose version
+
+app services = multiple containers
+
+Remove some containers:
+docker rm -f netshoot-container
+docker rm -f todo-app-container
+
+docker rm -f node-mysql-container
+docker rm -f mysql-container
+docker network rm todo-app-network  
+
+Start up the application stack:
+-f : file
+-d : detach(background mode)
+docker-compose -f ./node-mysql-docker-composer.yml up -d 

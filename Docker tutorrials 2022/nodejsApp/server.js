@@ -25,11 +25,11 @@ server.start()  //default port : 8000
 //OR using "terminal"
 /*
 curl --request POST \
-  --url http://localhost:8000/test \
+  --url http://localhost:8002/test \
   --header 'content-type: application/json' \
   --data '{"name": "Hoang", "content": "How are you" }'
 
-curl http://localhost:8000/test  
+curl http://localhost:8002/test  
 
 nodemon = node monitor
 */
