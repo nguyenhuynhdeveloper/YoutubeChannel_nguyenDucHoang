@@ -96,3 +96,5 @@ Start up the application stack:
 -f : file
 -d : detach(background mode)
 docker-compose -f ./node-mysql-docker-composer.yml up -d 
+
+Deploy your app to server => Kubenetes cluster
