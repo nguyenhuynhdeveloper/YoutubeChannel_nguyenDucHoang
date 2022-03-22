@@ -1,4 +1,6 @@
 # Logs
+.DS_Store
+DS_Store
 *.mp4
 logs
 *.log
