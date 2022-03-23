@@ -12,8 +12,50 @@ docker tag springboot-docker:latest springboot-docker:v1.0.0
 Login to your Docker Hub Account, create a repository
 docker tag springboot-docker:v1.0.0 sunlight4d/springboot-docker:v1.0.0
 
+- Push your own image to Docker Hub
 Push to Docker Hub:
 docker push sunlight4d/springboot-docker:v1.0.0
+Map port: 8085(Host) <=> 8083(Container)
 
-- Push your own image to Docker Hub
 - Pull and start/run a container
+docker run -dp 8085:8083 \
+--name springboot-docker-container \
+-v "$(pwd):/app" \
+--network springboot-app-network \
+sunlight4d/springboot-docker:v1.0.0
+
+Test Springboot app(you can use Web Browser, Postman):
+
+curl --request GET \
+--url http://localhost:8085/students/hello \
+--header 'content-type: application/json'
+
+Update code & rerun:
+docker restart springboot-docker-container
+
+Now create another MySQL container and put this within the same 
+network with springboot-docker-container:
+
+docker network create springboot-app-network
+
+docker run --rm -d \
+-v mysql-springboot-data:/var/lib/mysql \
+-v mysql-springboot-config-deamond:/etc/mysql/conf.d \
+--name mysql-springboot-container \
+-p 3310:3306 \
+-e MYSQL_USER=hoangnd \
+-e MYSQL_PASSWORD=Abc@123456789 \
+-e MYSQL_ROOT_PASSWORD=Abc@123456789 \
+-e MYSQL_DATABASE=StudentManagement \
+--network springboot-app-network \
+mysql:8.0.28
+
+Access mysql's command line inside mysql-springboot-container:
+docker exec -ti mysql-springboot-container mysql -u root -p
+
+Now write Java code
+send POST request:
+curl --request POST \
+  --url http://localhost:8085/students/insertStudent?name=Hoang&birthYear=1993   
+
+
