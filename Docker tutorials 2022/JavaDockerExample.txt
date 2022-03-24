@@ -53,9 +53,11 @@ mysql:8.0.28
 Access mysql's command line inside mysql-springboot-container:
 docker exec -ti mysql-springboot-container mysql -u root -p
 
-Now write Java code
-send POST request:
-curl --request POST \
-  --url http://localhost:8085/students/insertStudent?name=Hoang&birthYear=1993   
+Now replace all command to create containers into a .yml file
+=> use Docker Compose
+Build Docker Compose file:
+#Remove old containers:
 
+docker rm -f mysql-springboot-container springboot-docker-container
+docker-compose -f docker-compose.dev.yml up -d --build
 
