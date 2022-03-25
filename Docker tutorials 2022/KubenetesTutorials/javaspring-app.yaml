@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: javaspring-app-pod
+spec:
+  containers:
+  - name: mysql-springboot-container
+    image: mysql:8.0.28
+    volumeMounts:
+    - name: mysql-springboot-data
+      mountPath: /var/lib/mysql
+    - name: mysql-springboot-config-deamond
+      mountPath: /etc/mysql/conf.d
+    ports:
+    - containerPort: 3306
+  volumes:
+  - name: mysql-springboot-data
+    emptyDir: {}
+  - name: mysql-springboot-config-deamond
+    emptyDir: {}
