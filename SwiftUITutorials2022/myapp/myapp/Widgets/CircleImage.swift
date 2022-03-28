@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct CircleImage: View {
+    //flexible size
+    //CG = Core Graphics
+    var width: CGFloat? //props
+    var height: CGFloat?
     var body: some View {
         Image("iphone13ProMax")
+            .resizable()
+            .frame(width: width, height: height, alignment: .center)
             .clipShape(Circle())
             .overlay {
-                Circle().stroke(.gray, lineWidth: 5.0)
+                Circle().stroke(.white, lineWidth: 5.0)
             }
+            .shadow(radius: 10)
     }
 }
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage()
+        CircleImage(width: 300, height: 300)
     }
 }

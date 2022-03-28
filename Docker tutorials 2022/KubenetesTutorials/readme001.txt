@@ -19,3 +19,8 @@ kubectl get pod "pod's name" --watch
 
 Delete Pod
 kubectl delete pod "pod's name"  
+
+brew install kompose
+kompose -f docker-compose.dev.yml convert
+
+https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
