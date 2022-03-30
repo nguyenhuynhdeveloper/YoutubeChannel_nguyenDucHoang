@@ -20,7 +20,6 @@ struct Product {
     var latitude: Double
     var longitude: Double
     //Row / ProductListItem
-    var isFavorite: Bool
-    var count: Int = 0
+    var isFavorite: Bool = false
                 
 }

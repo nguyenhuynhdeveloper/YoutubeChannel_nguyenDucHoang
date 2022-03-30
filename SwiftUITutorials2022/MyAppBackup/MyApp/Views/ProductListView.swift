@@ -9,12 +9,11 @@ import SwiftUI
 
 //Now we filter the list(favorites or NOT favorites)
 struct ProductListView: View {
-    //var products:[Product] = ProductRepository().products
-    @EnvironmentObject var productRepository: ProductRepository
+    var products:[Product] = ProductRepository().products
     @State private var showFavoritesOnly = true
     //filteredProducts must be a FUNCTION !
     var filteredProducts:[Product] {
-        productRepository.products.filter { eachProduct in
+        products.filter { eachProduct in
             if(showFavoritesOnly == true) {
                 return eachProduct.isFavorite == true
             } else {
@@ -39,7 +38,7 @@ struct ProductListView: View {
                 List(filteredProducts, id: \.id) { product in
                     ZStack(alignment: .leading, content: {
                         NavigationLink(destination: {
-                            DetailProductView(product: product)
+                            DetailProductView()
                         }, label: {
                             EmptyView()
                         })
@@ -53,7 +52,6 @@ struct ProductListView: View {
             }
         }
     }
-    
     
 }
 

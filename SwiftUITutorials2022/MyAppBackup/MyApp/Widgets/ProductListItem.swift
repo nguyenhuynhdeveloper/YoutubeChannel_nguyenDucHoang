@@ -44,8 +44,8 @@ struct ProductListItem_Previews: PreviewProvider {
             imageURL:"https://upload.wikimedia.org/wikipedia/commons/e/e6/IPhone_%26_iPhone_3G.jpg",
             latitude: 21.027964,
             longitude: 105.851013,
-            isFavorite: true,
-            count: 10)
+            isFavorite: true
+        )
         )
     }
 }
