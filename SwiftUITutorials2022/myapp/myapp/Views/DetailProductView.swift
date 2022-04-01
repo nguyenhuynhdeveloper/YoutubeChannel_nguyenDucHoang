@@ -14,16 +14,22 @@ struct DetailProductView: View {
     //@State private var = internal state
     //when state changes => UI reload
     var product:Product
+    @State private var updatedProduct:Product = Product(id: 0, name: "", title: "", description: "", imageURL: "", latitude: 0, longitude: 0, isFavorite: false, count: 0)
+    
+    
+    //var updateProduct:((Int, Product)->Void)?
     var coordinateRegion:MKCoordinateRegion {
-        MKCoordinateRegion(
+        print("aa")
+        return MKCoordinateRegion(
             center: CLLocationCoordinate2D(
-                latitude: product.latitude,
-                longitude: product.longitude),
+                latitude: updatedProduct.latitude,
+                longitude: updatedProduct.longitude),
             span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         )
     }
+    
     var selectedIndex: Int {
-        productRepository.products.firstIndex(where: { $0.id == product.id })!
+        productRepository.products.firstIndex(where: { $0.id == updatedProduct.id })!
     }
     
     var radius: CGFloat = UIScreen.screenWidth / 4
@@ -35,37 +41,53 @@ struct DetailProductView: View {
                 .offset(y: -radius)
                 .padding(.bottom, -130)
             VStack(alignment: .leading) {
-                Text(product.name)
+                Text(updatedProduct.name)
                                 .font(.system(size: 18))
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                                 .padding(.bottom, 5)
-                LikeButton(isFavorite: .constant(productRepository.products[selectedIndex].isFavorite))
+                Button(action: {
+                    //updatedProduct.isFavorite.toggle()
+                    updatedProduct.isFavorite = !updatedProduct.isFavorite
+                    
+                    //updateProduct?(selectedIndex, product)
+                    productRepository.updateProduct(id: updatedProduct.id,
+                                                    updatedProduct: updatedProduct)
+                    print("haha")
+                }, label: {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(updatedProduct.isFavorite ? .yellow : .gray)
+                }).padding(10)
                             //Horizontal Stack
                             HStack {
-                                Text(product.title)
+                                Text(updatedProduct.title)
                                     .font(.subheadline)
                                 //Remain space
                                 Spacer()
-                                Text(product.count > 0 ? "In stock" : "Call")
+                                Text(updatedProduct.count > 0 ? "In stock" : "Call")
                                     .fontWeight(.bold)
-                                    .foregroundColor(product.count > 0 ? .green : .red)
+                                    .foregroundColor(updatedProduct.count > 0 ? .green : .red)
                             }
             }
             .padding()
             Divider()
-            Text(product.description ?? "")
+            Text(updatedProduct.description ?? "")
                             .font(.system(size: 16))
                             .foregroundColor(.black)
                             .padding(.top, 10)
                             .padding()
             Spacer()
         }
-        .navigationTitle(product.name)
+        .navigationTitle(updatedProduct.name)
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea()
         //Text("Hello World")
+        .onAppear {
+            self.updatedProduct = product
+        }
+        
     }
+    
 }
 //Now we create model, objects => display to ListView
 struct DetailProductView_Previews: PreviewProvider {

@@ -7,8 +7,7 @@
 
 import Foundation
 final class ProductRepository: ObservableObject {
-    var products:[Product] {
-        [
+    @Published var products:[Product] = [
         Product(
             id: 1,
             name: "iphone 3 GS",
@@ -85,8 +84,25 @@ final class ProductRepository: ObservableObject {
             longitude: 106.688087,
             isFavorite: true,
             count: 3
-        ),
+        )
     ]
+    func getProducts() -> [Product]{
+        return products
+    }
+    func updateProduct(id: Int, updatedProduct:Product) {
+        var product:Product? = products.filter { $0.id == id
+        }.first
+        if var product = product {
+            product.name = updatedProduct.name.count == 0 ? product.name : updatedProduct.name
+            product.title = updatedProduct.title.count == 0 ? product.title : updatedProduct.title
+            product.description = updatedProduct.description?.count == 0 ? product.description : updatedProduct.description
+            product.imageURL = updatedProduct.imageURL?.count == 0 ? product.imageURL : updatedProduct.imageURL
+            product.latitude = updatedProduct.latitude
+            product.longitude = updatedProduct.longitude
+            product.isFavorite = updatedProduct.isFavorite
+            product.count = updatedProduct.count
+            
+        }
         
     }
 }

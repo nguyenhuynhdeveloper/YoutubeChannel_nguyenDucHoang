@@ -8,7 +8,7 @@
 import SwiftUI
 
 //Now we filter the list(favorites or NOT favorites)
-struct ProductListView: View {
+struct ProductListView: View {    
     //var products:[Product] = ProductRepository().products
     @EnvironmentObject var productRepository: ProductRepository
     @State private var showFavoritesOnly = true

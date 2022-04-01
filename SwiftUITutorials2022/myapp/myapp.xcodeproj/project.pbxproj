@@ -15,7 +15,6 @@
 		FA2BF38727F1EEF700E98A19 /* ProductListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38627F1EEF700E98A19 /* ProductListItem.swift */; };
 		FA2BF38927F1F4A700E98A19 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38827F1F4A700E98A19 /* ProductListView.swift */; };
 		FA2BF38C27F1FB4900E98A19 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38B27F1FB4900E98A19 /* ProductRepository.swift */; };
-		FA461F5927F4877800F9B206 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA461F5827F4877800F9B206 /* LikeButton.swift */; };
 		FA65367227F04DC0007A0791 /* MyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65367127F04DC0007A0791 /* MyAppApp.swift */; };
 		FA65367627F04DC1007A0791 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA65367527F04DC1007A0791 /* Assets.xcassets */; };
 		FA65367927F04DC1007A0791 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA65367827F04DC1007A0791 /* Preview Assets.xcassets */; };
@@ -34,7 +33,6 @@
 		FA2BF38627F1EEF700E98A19 /* ProductListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListItem.swift; sourceTree = "<group>"; };
 		FA2BF38827F1F4A700E98A19 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		FA2BF38B27F1FB4900E98A19 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
-		FA461F5827F4877800F9B206 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		FA65366E27F04DC0007A0791 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA65367127F04DC0007A0791 /* MyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppApp.swift; sourceTree = "<group>"; };
 		FA65367527F04DC1007A0791 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			children = (
 				FA65368727F057B7007A0791 /* CircleImage.swift */,
 				FA2BF38627F1EEF700E98A19 /* ProductListItem.swift */,
-				FA461F5827F4877800F9B206 /* LikeButton.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -227,7 +224,6 @@
 				FA061B5027F0A3CD005ACFF8 /* Product.swift in Sources */,
 				FA65367B27F04DC1007A0791 /* Persistence.swift in Sources */,
 				FA061B4D27F09A99005ACFF8 /* DetailProductView.swift in Sources */,
-				FA461F5927F4877800F9B206 /* LikeButton.swift in Sources */,
 				FA2BF38927F1F4A700E98A19 /* ProductListView.swift in Sources */,
 				FA061B4B27F097B4005ACFF8 /* UIScreen+Utilities.swift in Sources */,
 				FA65367E27F04DC1007A0791 /* MyApp.xcdatamodeld in Sources */,

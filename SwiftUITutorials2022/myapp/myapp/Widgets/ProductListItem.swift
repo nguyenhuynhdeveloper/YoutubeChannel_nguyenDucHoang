@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductListItem: View {
+    
     var product:Product
     var body: some View {
         //Async Image = Image "load" asynchronously
