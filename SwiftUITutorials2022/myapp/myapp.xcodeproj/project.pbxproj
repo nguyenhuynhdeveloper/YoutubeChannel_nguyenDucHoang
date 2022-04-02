@@ -12,6 +12,8 @@
 		FA061B5027F0A3CD005ACFF8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA061B4F27F0A3CD005ACFF8 /* Product.swift */; };
 		FA061B5427F0A5E1005ACFF8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA061B5227F0A5E1005ACFF8 /* CoreLocation.framework */; };
 		FA061B5527F0A5E1005ACFF8 /* CoreLocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA061B5327F0A5E1005ACFF8 /* CoreLocationUI.framework */; };
+		FA173FF227F89FAB009190E8 /* WelcomeShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA173FF127F89FAB009190E8 /* WelcomeShape.swift */; };
+		FA173FF427F8B1BC009190E8 /* Color+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA173FF327F8B1BC009190E8 /* Color+Utilities.swift */; };
 		FA2BF38727F1EEF700E98A19 /* ProductListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38627F1EEF700E98A19 /* ProductListItem.swift */; };
 		FA2BF38927F1F4A700E98A19 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38827F1F4A700E98A19 /* ProductListView.swift */; };
 		FA2BF38C27F1FB4900E98A19 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BF38B27F1FB4900E98A19 /* ProductRepository.swift */; };
@@ -31,6 +33,8 @@
 		FA061B4F27F0A3CD005ACFF8 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		FA061B5227F0A5E1005ACFF8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA061B5327F0A5E1005ACFF8 /* CoreLocationUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocationUI.framework; path = System/Library/Frameworks/CoreLocationUI.framework; sourceTree = SDKROOT; };
+		FA173FF127F89FAB009190E8 /* WelcomeShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeShape.swift; sourceTree = "<group>"; };
+		FA173FF327F8B1BC009190E8 /* Color+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utilities.swift"; sourceTree = "<group>"; };
 		FA2BF38627F1EEF700E98A19 /* ProductListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListItem.swift; sourceTree = "<group>"; };
 		FA2BF38827F1F4A700E98A19 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		FA2BF38B27F1FB4900E98A19 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				FA061B4A27F097B4005ACFF8 /* UIScreen+Utilities.swift */,
+				FA173FF327F8B1BC009190E8 /* Color+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -91,6 +96,14 @@
 				FA061B5327F0A5E1005ACFF8 /* CoreLocationUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA173FF027F89F77009190E8 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				FA173FF127F89FAB009190E8 /* WelcomeShape.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 		FA2BF38A27F1FB0600E98A19 /* Repositories */ = {
@@ -121,6 +134,7 @@
 		FA65367027F04DC0007A0791 /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA173FF027F89F77009190E8 /* Shapes */,
 				FA2BF38A27F1FB0600E98A19 /* Repositories */,
 				FA061B4E27F0A3C0005ACFF8 /* Models */,
 				FA061B4927F09790005ACFF8 /* Extensions */,
@@ -226,6 +240,8 @@
 				FA65368627F04E8E007A0791 /* WelcomeView.swift in Sources */,
 				FA061B5027F0A3CD005ACFF8 /* Product.swift in Sources */,
 				FA65367B27F04DC1007A0791 /* Persistence.swift in Sources */,
+				FA173FF227F89FAB009190E8 /* WelcomeShape.swift in Sources */,
+				FA173FF427F8B1BC009190E8 /* Color+Utilities.swift in Sources */,
 				FA061B4D27F09A99005ACFF8 /* DetailProductView.swift in Sources */,
 				FA2BF38927F1F4A700E98A19 /* ProductListView.swift in Sources */,
 				FA061B4B27F097B4005ACFF8 /* UIScreen+Utilities.swift in Sources */,

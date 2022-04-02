@@ -16,8 +16,10 @@ struct MyAppApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             //DetailProductView()
-            ProductListView()
-                .environmentObject(ProductRepository())
+//            ProductListView()
+//                .environmentObject(ProductRepository())
+            //WelcomeShape()
+            WelcomeView()
         }
     }
 }
