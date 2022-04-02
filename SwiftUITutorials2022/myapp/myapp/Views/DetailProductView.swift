@@ -46,18 +46,6 @@ struct DetailProductView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                                 .padding(.bottom, 5)
-                Button(action: {
-                    //updatedProduct.isFavorite.toggle()
-                    updatedProduct.isFavorite = !updatedProduct.isFavorite
-                    
-                    //updateProduct?(selectedIndex, product)
-                    productRepository.updateProduct(id: updatedProduct.id,
-                                                    updatedProduct: updatedProduct)
-                    print("haha")
-                }, label: {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(updatedProduct.isFavorite ? .yellow : .gray)
-                }).padding(10)
                             //Horizontal Stack
                             HStack {
                                 Text(updatedProduct.title)
