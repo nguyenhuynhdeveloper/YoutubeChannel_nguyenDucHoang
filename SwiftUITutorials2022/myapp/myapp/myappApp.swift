@@ -20,6 +20,7 @@ struct MyAppApp: App {
 //                .environmentObject(ProductRepository())
             //WelcomeShape()
             WelcomeView()
+                .environmentObject(ProductRepository())
         }
     }
 }

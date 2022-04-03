@@ -25,6 +25,7 @@
 		FA65367E27F04DC1007A0791 /* MyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA65367C27F04DC1007A0791 /* MyApp.xcdatamodeld */; };
 		FA65368627F04E8E007A0791 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65368527F04E8E007A0791 /* WelcomeView.swift */; };
 		FA65368827F057B7007A0791 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65368727F057B7007A0791 /* CircleImage.swift */; };
+		FADD63A627F9911B0099070A /* WelcomeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD63A527F9911B0099070A /* WelcomeMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		FA65367D27F04DC1007A0791 /* MyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyApp.xcdatamodel; sourceTree = "<group>"; };
 		FA65368527F04E8E007A0791 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		FA65368727F057B7007A0791 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		FADD63A527F9911B0099070A /* WelcomeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				FA061B4F27F0A3CD005ACFF8 /* Product.swift */,
 				FA34D52427F83ABE0031B8A4 /* Hike.swift */,
+				FADD63A527F9911B0099070A /* WelcomeMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				FA65368627F04E8E007A0791 /* WelcomeView.swift in Sources */,
 				FA061B5027F0A3CD005ACFF8 /* Product.swift in Sources */,
 				FA65367B27F04DC1007A0791 /* Persistence.swift in Sources */,
+				FADD63A627F9911B0099070A /* WelcomeMessage.swift in Sources */,
 				FA173FF227F89FAB009190E8 /* WelcomeShape.swift in Sources */,
 				FA173FF427F8B1BC009190E8 /* Color+Utilities.swift in Sources */,
 				FA061B4D27F09A99005ACFF8 /* DetailProductView.swift in Sources */,
