@@ -2,6 +2,7 @@
 /**
  * Install Live Server Web Extension Chrome
  * Install Live Server, PHP Server on VSCode
+ * Install XAMPP,set environment path for PHP 
  * Right click php file, "Reload server"
  */
     //echo "Hello sdddddss";

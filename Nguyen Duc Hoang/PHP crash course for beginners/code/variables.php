@@ -22,7 +22,7 @@
         $x = '1' + '2';//differ from js
         //echo $x;
         //echo 10 / 2;
-        echo 10 % 3;
+        //echo 10 % 3;
         define('SERVER', 'localhost');
         define('DB_NAME', 'test_db');
         echo DB_NAME;
