@@ -1,5 +1,5 @@
 package com.kotlin.tutorials
-import com.kotlin.tutorials.models.User.User
+import com.kotlin.tutorials.models.User
 
 //define a function
 fun sayHello(name: String):Unit {
@@ -101,7 +101,17 @@ fun main() {
     val squaredNumber:(Int) -> Int = {x -> x * x}
     println(squaredNumber(20))
 
-    var user1 = User(1, "Hoang", "sunlight4d@gmail.com")
-    print(user1)
-
+    val user1 = User(1, "Hoang", "sunlight4d@gmail.com")
+    val user2 = User(1, "Hoang", "sunlight4d@gmail.com")
+    println(user1 == user2)
+    //content are the same => hashcodes are the same
+    println(user1.hashCode() == user2.hashCode())
+    //clone an entire object
+    val user3:User = user1.copy()
+    println(user3 == user1)
+    //but they have not the same addresses
+    println(user3 === user1)
+    //clone and change some fields
+    val user4:User = user1.copy(id = 11, name="Hoang2")
+    println(user4)
 }
