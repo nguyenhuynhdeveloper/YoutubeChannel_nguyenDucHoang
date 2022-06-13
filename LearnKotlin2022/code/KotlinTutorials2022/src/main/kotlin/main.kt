@@ -1,7 +1,12 @@
 package com.kotlin.tutorials
 import com.kotlin.tutorials.enums.Quality
 import com.kotlin.tutorials.enums.RequestError
+import com.kotlin.tutorials.models.Bicycle
+import com.kotlin.tutorials.models.Car
 import com.kotlin.tutorials.models.User
+import com.kotlin.tutorials.models.Vehicle
+import com.kotlin.tutorials.utilities.Calculation
+import java.util.Objects
 
 //define a function
 fun sayHello(name: String):Unit {
@@ -138,6 +143,42 @@ fun main() {
         override fun toString(): String = "name: $name, email: ${this.email}, age: $age"
     }
     println(person1)
-    //singleton(companion) object
-
+    //companion object, like "static"
+    println(Calculation.multiply(2, 3))
+    //inheritance
+    //sealed type is abstract, so it cannot be initiated
+    //val vehicle1 = Vehicle("aa", "bb", 123.0)
+    val bicycle1:Vehicle = Bicycle("vihaha", "model A", 11.2, hasBaset = true)
+    val car1:Car = Car("Audi A4","sedan", 1122334.0, horsePower = 12.3)
+    println(bicycle1)
+    fun describeVehicle(vehicle: Vehicle):String {
+        return when(vehicle) {
+            is Bicycle -> "This is a bicycle"
+            is Car -> "This is a car"
+            else -> "I donot know"
+        }
+    }
+    println(describeVehicle(bicycle1))
+    //Extension Functions
+    //add more function to Car class
+    fun Car.run(speed: Double) {
+        println("$name running at speed: $speed")
+    }
+    car1.run(1122.0)
+    val someNumbers = mutableListOf<Int>(1, 3, 5, -2, -8, 7)
+    someNumbers[2] = 33
+    for (item in someNumbers) {
+        println(item)
+    }
+    if(someNumbers.any {it < 0}) {
+        println("At least 1 item is negative")
+    }
+    if (someNumbers.all { it < 100 }) {
+        println("all items are < 100")
+    }
+    if (someNumbers.none { it == 100 }) {
+        println("No item has value = 1000")
+    }
+    val someFloats = listOf<Float>(3.5f, 2.2f, 4.6f, 1.8f)
+    //someFloats[3] = 22 //cannot change
 }
