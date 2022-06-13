@@ -1,4 +1,6 @@
 package com.kotlin.tutorials
+import com.kotlin.tutorials.enums.Quality
+import com.kotlin.tutorials.enums.RequestError
 import com.kotlin.tutorials.models.User
 
 //define a function
@@ -114,4 +116,28 @@ fun main() {
     //clone and change some fields
     val user4:User = user1.copy(id = 11, name="Hoang2")
     println(user4)
+    val quality:Quality = Quality.NORMAL
+    //switch-case
+    val qualityMessage:String = when(quality) {
+        //this is like "map function"
+        Quality.BAD -> "This is bad"
+        Quality.NORMAL -> "Quality is normal"
+        Quality.GOOD -> "Yes, it's good"
+        Quality.EXCELLENT -> "Wow, excellent"
+    }
+    println("qualityMessage= $qualityMessage")
+    val requestError:RequestError = RequestError.INTERNAL_ERROR
+    println(requestError)
+    println(requestError.message)
+    println(requestError.wordCount())
+    //define a key-value object
+    val person1 = object {
+        var name = "Hoang"
+        var email = "sunlight4d@gmail.com"
+        var age = 18
+        override fun toString(): String = "name: $name, email: ${this.email}, age: $age"
+    }
+    println(person1)
+    //singleton(companion) object
+
 }
