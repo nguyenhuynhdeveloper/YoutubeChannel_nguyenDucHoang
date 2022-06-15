@@ -6,7 +6,6 @@ import com.kotlin.tutorials.models.Car
 import com.kotlin.tutorials.models.User
 import com.kotlin.tutorials.models.Vehicle
 import com.kotlin.tutorials.utilities.Calculation
-import java.util.Objects
 
 //define a function
 fun sayHello(name: String):Unit {
@@ -148,8 +147,8 @@ fun main() {
     //inheritance
     //sealed type is abstract, so it cannot be initiated
     //val vehicle1 = Vehicle("aa", "bb", 123.0)
-    val bicycle1:Vehicle = Bicycle("vihaha", "model A", 11.2, hasBaset = true)
-    val car1:Car = Car("Audi A4","sedan", 1122334.0, horsePower = 12.3)
+    val bicycle1:Vehicle = Bicycle("vihaha", 2022,  hasBasket = true)
+    val car1:Car = Car("GLB 200 7G-DCT",2020,81.3f, horsePower = 163)
     println(bicycle1)
     fun describeVehicle(vehicle: Vehicle):String {
         return when(vehicle) {
@@ -181,4 +180,21 @@ fun main() {
     }
     val someFloats = listOf<Float>(3.5f, 2.2f, 4.6f, 1.8f)
     //someFloats[3] = 22 //cannot change
+    //list of objects
+    var cars = mutableListOf<Car>(
+        Car("GLB 200 7G-DCT", 2020,81.3f, 163),
+        Car("GLB 200 d 8G-DCT", 2020,119f, 150),
+        Car("Lexus CT200H F SPORT", 2014,109.7f, 136),
+        Car("Lexus CT200H Hybrid", 2018,119f, 150),
+        Car("Jetta Advance 1.6 TDI 105HP BlueMotion Technology DSG 7", 2011,97.5f, 105),
+        Car("Jetta Sport 1.4 TSI 160HP DSG 7 speed", 2011,84.8f, 160),
+        Car("Bentley Flying Spur W12", 2013,243.7f, 528),
+        Car("Bentley Brooklands 2008", 2007,412.6f, 537),
+        Car("Continental GTC 6.0 W12", 2019,363.1f, 635),
+        Car("Bentley 8 Litre", 1930,487.2f, 230),
+        Car("Qashqai DIG-T 158 4WD Auto", 2021,81.3f, 158),
+        Car("Nissan Murano Z50 3.5 (234HP)", 2004,213.5f, 234),
+        Car("Nissan Laurel JC32 2.8 D", 2020,172.5f, 90),
+
+    )
 }

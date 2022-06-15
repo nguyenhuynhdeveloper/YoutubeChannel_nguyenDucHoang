@@ -1,5 +1,7 @@
 package com.kotlin.tutorials.models
-class Car(name: String, model: String, price: Double,val horsePower: Double)
-    : Vehicle(name, model, price) {
-    override fun toString(): String = "${super.toString()} price: ${this.price}"
+class Car(name: String, year: Int,
+          private val engineSize: Float, val horsePower: Int)
+    : Vehicle(name, year) {
+    override fun toString(): String = "${super.toString()} " +
+            "engineSize: ${this.engineSize}, horsePower: ${this.horsePower}"
 }

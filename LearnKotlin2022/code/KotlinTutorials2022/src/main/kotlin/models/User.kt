@@ -5,6 +5,10 @@ data class User(val id: Int, val name: String, val email:String) {
         other is User && this.id == id &&
                 this.name == name &&
                 this.email == email
+
+    override fun hashCode(): Int {
+        return id + name.hashCode() + email.hashCode()
+    }
 }
 //data class User(val name: String, val id: Int) {           // 1
 //    override fun equals(other: Any?) =

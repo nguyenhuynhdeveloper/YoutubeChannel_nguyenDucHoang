@@ -1,6 +1,7 @@
 package com.kotlin.tutorials.models
 
-class Bicycle(name: String, model: String, price: Double,val hasBaset: Boolean)
-    : Vehicle(name, model, price) {
-    override fun toString(): String = "${super.toString()} price: ${this.price}"
+class Bicycle(name: String, year: Int,
+              val hasBasket: Boolean)
+    : Vehicle(name, year) {
+    override fun toString(): String = "${super.toString()} hasBasket: ${this.hasBasket}"
     }
