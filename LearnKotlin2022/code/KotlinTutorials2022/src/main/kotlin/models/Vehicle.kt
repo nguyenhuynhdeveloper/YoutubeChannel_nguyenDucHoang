@@ -3,6 +3,6 @@ package com.kotlin.tutorials.models
 //open or sealed = inheritable
 //sealed class is abstract
 //sealed can be inherited only in the same package
-sealed class Vehicle(private val name: String, private val year: Int) {
+sealed class Vehicle(var name: String, var year: Int) {
     override fun toString(): String = "name: ${this.name}, year: ${this.year}"
 }

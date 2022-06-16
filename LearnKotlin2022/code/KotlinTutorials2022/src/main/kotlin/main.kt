@@ -106,7 +106,11 @@ fun main() {
     println(url(0, 10))
     val squaredNumber:(Int) -> Int = {x -> x * x}
     println(squaredNumber(20))
-
+    url(1, 20).let {               // 1
+        println("It means that url NOT NULL")                // 2
+        println(it)
+        println("do something more...")
+    }
     val user1 = User(1, "Hoang", "sunlight4d@gmail.com")
     val user2 = User(1, "Hoang", "sunlight4d@gmail.com")
     println(user1 == user2)
@@ -142,13 +146,33 @@ fun main() {
         override fun toString(): String = "name: $name, email: ${this.email}, age: $age"
     }
     println(person1)
+    var person2 = mutableMapOf<String, Any>(
+        "name" to "John",
+        "email" to "john@gmail.com",
+        "age" to 22
+    )
+    person2["name"] = "Henry"
+    println("name = ${person2["name"]}")
+    println("address = ${person2["address"] ?: "no address"}")
     //companion object, like "static"
     println(Calculation.multiply(2, 3))
     //inheritance
     //sealed type is abstract, so it cannot be initiated
     //val vehicle1 = Vehicle("aa", "bb", 123.0)
-    val bicycle1:Vehicle = Bicycle("vihaha", 2022,  hasBasket = true)
+    val bicycle1:Bicycle = Bicycle("vihaha", 2022,  hasBasket = true)
     val car1:Car = Car("GLB 200 7G-DCT",2020,81.3f, horsePower = 163)
+    println(bicycle1)
+    println(bicycle1.name)
+    println(bicycle1.hasBasket)
+    //you can print multiple fields
+    with(bicycle1) {
+        println("name = $name, hasBasket = $hasBasket")
+    }
+    //update multiple properties
+    bicycle1.apply {
+        year = 2022
+        hasBasket = false
+    }
     println(bicycle1)
     fun describeVehicle(vehicle: Vehicle):String {
         return when(vehicle) {
@@ -191,10 +215,42 @@ fun main() {
         Car("Bentley Flying Spur W12", 2013,243.7f, 528),
         Car("Bentley Brooklands 2008", 2007,412.6f, 537),
         Car("Continental GTC 6.0 W12", 2019,363.1f, 635),
-        Car("Bentley 8 Litre", 1930,487.2f, 230),
         Car("Qashqai DIG-T 158 4WD Auto", 2021,81.3f, 158),
-        Car("Nissan Murano Z50 3.5 (234HP)", 2004,213.5f, 234),
         Car("Nissan Laurel JC32 2.8 D", 2020,172.5f, 90),
-
     )
+    //cars[1].name = "abc"
+    println(cars)
+    println("add to the first item")
+    cars.add(0, Car("Nissan Murano Z50 3.5 (234HP)", 2004,213.5f, 234),)
+    println(cars)
+    println("add to the last item")
+    cars.add(Car("Bentley 8 Litre", 1930,487.2f, 230),)
+    println(cars)
+    var filteredCars = cars.filter { it.year in 2013..2016 }
+    for(car in filteredCars) {
+        println(car)
+    }
+    filteredCars = cars.filter { it.name.contains("lexus", true) }
+    filteredCars.forEach {
+        println(it)
+    }
+    //sort a list
+    println("Sort by horse power")
+    var sortedCars = cars.sortedBy { it.horsePower }
+    sortedCars = cars.sortedByDescending { it.horsePower }
+    sortedCars.forEach {
+        println(it)
+    }
+    //get only car's names
+    var carNames = cars.map { it.name }
+    carNames.forEach { println(it) }
+    println("There are ${carNames.count()} cars")
+    println("First name: ${carNames.first()}, last name: ${carNames.last()}")
+    //split/partition a list
+    val (newerCars, olderCars) = cars.partition { it.year > 2019 }
+    println(newerCars)
+    println(olderCars)
+    println(cars.minOf { it.horsePower })
+    println(cars.maxOf { it.horsePower })
+
 }

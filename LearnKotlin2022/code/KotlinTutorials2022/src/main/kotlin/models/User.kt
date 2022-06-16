@@ -1,5 +1,5 @@
 package com.kotlin.tutorials.models
-data class User(val id: Int, val name: String, val email:String) {
+data class User(var id: Int, var name: String, var email:String) {
     //compare content
     override fun equals(other: Any?): Boolean =
         other is User && this.id == id &&
