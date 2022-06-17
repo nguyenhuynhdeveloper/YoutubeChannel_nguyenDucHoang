@@ -1,11 +1,14 @@
 package com.kotlin.tutorials
 import com.kotlin.tutorials.enums.Quality
 import com.kotlin.tutorials.enums.RequestError
-import com.kotlin.tutorials.models.Bicycle
-import com.kotlin.tutorials.models.Car
-import com.kotlin.tutorials.models.User
-import com.kotlin.tutorials.models.Vehicle
+import com.kotlin.tutorials.models.*
+import com.kotlin.tutorials.storage.MongoDBRepository
+import com.kotlin.tutorials.storage.MyDBRepository
 import com.kotlin.tutorials.utilities.Calculation
+import java.net.URI
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
 
 //define a function
 fun sayHello(name: String):Unit {
@@ -252,5 +255,30 @@ fun main() {
     println(olderCars)
     println(cars.minOf { it.horsePower })
     println(cars.maxOf { it.horsePower })
+    val connectionString = "Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;"
+    val repository:MyDBRepository = MyDBRepository(connectionString)
+    repository.makeConnection(connectionString)
+    //Delegated Properties = make a separated class that override getter/setter
+    val user5 = User(11, "Ted", "ted@gmail.com")
+    user5.age = 30
+    println(user5.age)
+    //Standard Delegates: lazy, observable
+    println(user5.description)
+    //from key-value object => custom Object
+    val productA = Product(mapOf(
+        "name" to "iphone 14",
+        "price" to 2000
+    ))
+    println(productA)
+    //test observable property
+    productA.description = "haha"
+    productA.description = "hehe"
+    //property's type is Int
+    //observable with validation = Vetoable
+    productA.count = 2
+    productA.count = 3
+    productA.count = -1
+    println(productA.count)
+
 
 }
