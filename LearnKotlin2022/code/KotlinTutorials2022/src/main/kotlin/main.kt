@@ -9,6 +9,11 @@ import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
+import java.net.http.HttpResponse.BodyHandlers
+import kotlinx.coroutines.*
+import kotlin.system.*
+
+
 
 //define a function
 fun sayHello(name: String):Unit {
@@ -279,6 +284,38 @@ fun main() {
     productA.count = 3
     productA.count = -1
     println(productA.count)
+    //https://zetcode.com/kotlin/getpostrequest/
+    val urlGetRandomUser = "https://randomuser.me/api"
+    val urlGetDetailCountry = "https://api.zippopotam.us/us/33162"
+
+    val client = HttpClient.newBuilder().build();
+    val request = HttpRequest.newBuilder()
+        .uri(URI.create("http://webcode.me"))
+        .build();
+    val response = client.sendAsync(request, BodyHandlers.ofString())
+
+    suspend fun doSomethingUsefulOne(): Int {
+        delay(1000L) // pretend we are doing something useful here
+        return 13
+    }
+
+    suspend fun doSomethingUsefulTwo(): Int {
+        delay(1000L) // pretend we are doing something useful here, too
+        return 29
+    }
+    runBlocking<Unit> {
+        val time = measureTimeMillis {
+            val one = async { doSomethingUsefulOne() }
+            val two = async { doSomethingUsefulTwo() }
+            println("The answer is ${one.await() + two.await()}")
+        }
+        println("Completed in $time ms")
+    }
+//    suspend fun getData(): String {
+//        // above code to construct client + request
+//        val response = client.sendAsync(request, BodyHandlers.ofString());
+//    //    return response.await().body() // suspend and return String not a Future
+//    }
 
 
 }
