@@ -1,3 +1,0 @@
--Install JDK - Java Development Kit, at least 11
--Open VSCode, install: Code Runner, Kotlin Language
--Download  and install kotlin compiler, set Windows environment path 

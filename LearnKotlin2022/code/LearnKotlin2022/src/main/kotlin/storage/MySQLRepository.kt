@@ -1,6 +1,6 @@
-package com.kotlin.tutorials.storage
+package storage
 
-open class MongoDBRepository(val connectionString: String):IStorageRepository {
+class MySQLRepository(val connectionString: String): IStorageRepository {
     override fun makeConnection(connectionString: String) {
         println("connect MySQL DB with $connectionString")
     }

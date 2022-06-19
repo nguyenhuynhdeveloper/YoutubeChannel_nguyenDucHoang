@@ -1,6 +1,5 @@
-package com.kotlin.tutorials.storage
+package storage
 
 interface IStorageRepository {
     fun makeConnection(connectionString: String)
-    //other insert, update, delete...here
 }
