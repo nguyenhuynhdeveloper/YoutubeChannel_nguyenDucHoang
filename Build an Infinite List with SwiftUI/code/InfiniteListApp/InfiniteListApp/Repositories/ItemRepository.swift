@@ -14,7 +14,7 @@ class ItemRepository:ObservableObject {
     @Published var hasReachedMax = false
     @Published var itemStatus:ItemStatus = .initial
     
-    func getProducts(startIndex: Int = 1, limit:Int = 10) async throws {
+    func getProducts(startIndex: Int = 1, limit:Int = 10) async {
         isLoading = true
         if hasReachedMax == true {
             isLoading = false
@@ -29,7 +29,7 @@ class ItemRepository:ObservableObject {
             let sharedSession = URLSession.shared
             if itemStatus == ItemStatus.initial {
                 
-            }            
+            }
             let (data, response) = try await sharedSession.data(from: url, delegate: nil)
             var responseProducts:[Item] = []
             responseProducts = try JSONDecoder().decode([Item].self, from: data)
@@ -40,5 +40,6 @@ class ItemRepository:ObservableObject {
             itemStatus = .failure(message: error.localizedDescription)
         }
     }
+    //private func fetchProduct
 }
 
