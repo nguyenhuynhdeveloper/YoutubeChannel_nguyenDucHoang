@@ -1,0 +1,23 @@
+Pod contains several containers, shared volumes, share networks
+All containers inside pod share volume and ip addresses
+1 pod - 1 container is common
+K8s contains many nodes, one node contains many pods
+2 types of Node: Master(Control Plane) and Worker
+Services in Master node:
+API Server(using kubectl), 
+Scheduler, 
+etcd: save K8s logs(k-v pairs)
+kubelet, kube-proxy(for network communication), Container Runtime
+Services in Worker node:kubelet, kube-proxy, Container Runtime
+minikue => single node(be both master and worker node)
+-Install kubectl on windows, remove Docker Desktop firstly
+kubectl config get-contexts
+kubectl config set-context <Your context>
+Remove context:
+kubectl config delete-context my-cluster-contex
+Remove all context before start
+Create a minikube cluster
+minikube delete
+Run this as "admin"
+minikube start --driver=hyperv 
+
