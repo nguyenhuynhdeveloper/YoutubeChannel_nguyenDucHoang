@@ -11,7 +11,7 @@ import SwiftUI
 struct InfiniteListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InfiniteListView()
         }
     }
 }
