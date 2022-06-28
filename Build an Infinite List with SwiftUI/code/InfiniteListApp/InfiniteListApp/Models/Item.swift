@@ -15,11 +15,9 @@ struct Item:Identifiable, Codable, Equatable {
         //return name
         name
     }
-    /*
-    static func == (productA: Product, productB: Product) -> Bool {
-            return
-                productA.name == productB.name
-                    && productA.tagline == productB.tagline
-        }
-     */
+    
+    static func == (itemA: Item, itemB: Item) -> Bool {
+        itemA.name == itemA.name
+    }
+     
 }

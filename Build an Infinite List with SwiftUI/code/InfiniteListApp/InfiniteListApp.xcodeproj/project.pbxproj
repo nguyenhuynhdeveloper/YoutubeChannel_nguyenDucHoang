@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		FA6068632862189B00F61C2B /* InfiniteListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6068622862189B00F61C2B /* InfiniteListAppApp.swift */; };
-		FA6068652862189B00F61C2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6068642862189B00F61C2B /* ContentView.swift */; };
 		FA6068672862189D00F61C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6068662862189D00F61C2B /* Assets.xcassets */; };
 		FA60686A2862189D00F61C2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6068692862189D00F61C2B /* Preview Assets.xcassets */; };
 		FA606872286219C900F61C2B /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA606871286219C900F61C2B /* ItemRepository.swift */; };
 		FA60687528621A7800F61C2B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60687428621A7800F61C2B /* Item.swift */; };
+		FAFDC3162866A8DF00D3F995 /* InfiniteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDC3152866A8DF00D3F995 /* InfiniteListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA60685F2862189B00F61C2B /* InfiniteListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6068622862189B00F61C2B /* InfiniteListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteListAppApp.swift; sourceTree = "<group>"; };
-		FA6068642862189B00F61C2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA6068662862189D00F61C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6068692862189D00F61C2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA606871286219C900F61C2B /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		FA60687428621A7800F61C2B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FAFDC3152866A8DF00D3F995 /* InfiniteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +58,9 @@
 				FA60687328621A5C00F61C2B /* Models */,
 				FA606870286219A100F61C2B /* Repositories */,
 				FA6068622862189B00F61C2B /* InfiniteListAppApp.swift */,
-				FA6068642862189B00F61C2B /* ContentView.swift */,
 				FA6068662862189D00F61C2B /* Assets.xcassets */,
 				FA6068682862189D00F61C2B /* Preview Content */,
+				FAFDC3152866A8DF00D3F995 /* InfiniteListView.swift */,
 			);
 			path = InfiniteListApp;
 			sourceTree = "<group>";
@@ -159,8 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFDC3162866A8DF00D3F995 /* InfiniteListView.swift in Sources */,
 				FA60687528621A7800F61C2B /* Item.swift in Sources */,
-				FA6068652862189B00F61C2B /* ContentView.swift in Sources */,
 				FA6068632862189B00F61C2B /* InfiniteListAppApp.swift in Sources */,
 				FA606872286219C900F61C2B /* ItemRepository.swift in Sources */,
 			);
