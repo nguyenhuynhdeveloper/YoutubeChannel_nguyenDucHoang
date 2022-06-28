@@ -18,6 +18,8 @@ kubectl config delete-context my-cluster-contex
 Remove all context before start
 Create a minikube cluster
 minikube delete
-Run this as "admin"
+Open powershell as "admin"
+Turn on windows features: hyperv
 minikube start --driver=hyperv 
+
 
