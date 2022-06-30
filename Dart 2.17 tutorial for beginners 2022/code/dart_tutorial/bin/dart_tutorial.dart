@@ -2,6 +2,8 @@ import 'package:dart_tutorial/functions.dart';
 import 'package:dart_tutorial/models/bicycle.dart';
 import 'package:dart_tutorial/models/car.dart';
 import 'package:dart_tutorial/models/vehicle.dart';
+import 'package:dart_tutorial/repositories/category_repository.dart';
+import 'package:dart_tutorial/repositories/movie_repository.dart';
 
 void main(List<String> arguments) {
   var firstName = "Nguyen";
@@ -111,21 +113,15 @@ void main(List<String> arguments) {
     print("2 objects has the same contents");
   }
   //clone an object, create a method named "copyWith"
-  
-  
-  /*
-  Bicycle bicycle2 = Bicycle(
-      name: 'Cannondale Quick CX 4 Women\'s Bike',
-      year: 2021,
-      hasBasket: false);
-  */
-
-  /*
+  Bicycle bicycle3 = bicycle2.copyWith(year: 2020);
+  Bicycle bicycle4 = bicycle2.copyWith(year: 2020, name: "new bicycle");
+  print(bicycle3.toString()); //debug to show more
+  print(Bicycle.maxSpeed);
   //Vehicle vehicle1 = Vehicle(); //cannot initialize
   List<Car> cars = [
     Car("GLB 200 7G-DCT", 2021, 1.3, 163),
     Car("GLB 200 d 8G-DCT", 2020, 119, 150),
-    Car("Lexus CT200H F SPORT", 2014, 109.7, 136),    
+    Car("Lexus CT200H F SPORT", 2014, 109.7, 136),
     Car("Jetta Advance 1.6 TDI 105HP BlueMotion Technology DSG 7", 2011, 97.5,
         105),
     Car("Jetta Sport 1.4 TSI 160HP DSG 7 speed", 2011, 84.8, 160),
@@ -149,21 +145,33 @@ void main(List<String> arguments) {
   print(filteredCars);
   cars[0].name = "kaka";
   print(cars);
-  
+
   print("sort the list, by horsePower");
   //make a separated list, then sort
   List<Car> sortedCars = [...cars];
   sortedCars.sort((car1, car2) => car1.year - car2.year); //sort ascending
   print('cars = $cars');
-  print('sortedCars = $sortedCars');    
+  print('sortedCars = $sortedCars');
   //get car's name and add to a separated list
   List<String> carNames = cars.map((car) => car.name).toList();
   print(carNames);
   //key-value object
-  Map<String, Object> user = {
+  final Map<String, Object> user = {
     'name': 'Hoang',
     'email': 'sunlight4d@gmail.com',
     'age': 18,
-  }
-  */
+  };
+  user['name'] = 'Henry'; //final is ok, but "const" is immutable
+  print(user);
+  //dart pub add http
+  print('Begin task1');
+  fetchMovies().then((movies) {
+    print('finished task1');
+    print('movies = $movies');
+  });
+  print('Begin task2');
+  fetchCategories().then((categories) {
+    print('finished task2');
+    print('categories = $categories');
+  });
 }
