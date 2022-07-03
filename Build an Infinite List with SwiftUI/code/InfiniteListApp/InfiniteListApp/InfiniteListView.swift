@@ -29,6 +29,7 @@ struct InfiniteListView: View {
                             .font(.title3)
                     }
                     .onAppear {
+                        print("\(item.id)-\(item.title)")
                         if item == itemRepository.items.last {
                             print("move to the last, loading more...")
                             Task.init {
@@ -51,6 +52,7 @@ struct InfiniteListView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.all)
         .onAppear {
             Task.init {
                 await itemRepository.getProducts()

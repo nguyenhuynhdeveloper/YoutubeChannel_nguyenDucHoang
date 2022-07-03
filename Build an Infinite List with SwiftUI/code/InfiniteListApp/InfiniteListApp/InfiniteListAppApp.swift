@@ -12,6 +12,7 @@ struct InfiniteListAppApp: App {
     var body: some Scene {
         WindowGroup {
             InfiniteListView()
+            
         }
     }
 }
