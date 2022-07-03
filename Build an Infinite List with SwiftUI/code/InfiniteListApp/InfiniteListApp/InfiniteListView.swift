@@ -10,37 +10,52 @@ import SwiftUI
 struct InfiniteListView: View {
     @ObservedObject var itemRepository:ItemRepository = ItemRepository.shared
     var body: some View {
-        List {
-            ForEach(itemRepository.items) { item in
-                Text("haha")
-            }
-        }
-        /*
         ZStack {
             List {
-                ForEach(itemRepository.products, id: \.id) {
+                ForEach(itemRepository.items) { item in
                     HStack {
-                        Text("haha")
+                        AsyncImage(
+                            url: URL(string: item.url),
+                            content: {
+                                $0.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 100, maxHeight: 100)
+                            },
+                            placeholder: {
+                                ProgressView()
+                            }
+                        )
+                        Text(item.title)
+                            .font(.title3)
+                    }
+                    .onAppear {
+                        if item == itemRepository.items.last {
+                            print("move to the last, loading more...")
+                            Task.init {
+                                await itemRepository.getProducts()
+                            }
+                        }
                     }
                 }
-                if itemRepository.isLoading {
-                    HStack {
-                                            Spacer()
-                                            Circle()
-                                                        .trim(from: 0, to: 0.7)
-                                                        .stroke(Color.primary)
-                                                        .frame(width: 50, height: 50)
-                                                        .rotationEffect(Angle(degrees: 360))
-                                                        .animation(Animation.default.repeatForever(autoreverses: false))
-                                            Spacer()
-                                        }
+            }
+            if itemRepository.isLoading {
+                HStack {
+                    Spacer()
+                    Circle()
+                        .trim(from: 0, to: 0.7)
+                        .stroke(Color.primary)
+                        .frame(width: 50, height: 50)
+                        .rotationEffect(Angle(degrees: 360))
+                        .animation(Animation.default.repeatForever(autoreverses: false),value: UUID())
+                    Spacer()
                 }
             }
         }
-        .onAppear() {
-            itemRepository.getProducts(startIndex: 1, limit: 10)
+        .onAppear {
+            Task.init {
+                await itemRepository.getProducts()
+            }
         }
-        */
     }
 }
 

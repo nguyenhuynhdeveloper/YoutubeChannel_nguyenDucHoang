@@ -12,35 +12,38 @@ class ItemRepository:ObservableObject {
     static let shared = ItemRepository()
     @Published var items: [Item] = []
     @Published var isLoading = false
-    @Published var hasReachedMax = false
-    @Published var itemStatus:ItemStatus = .initial
+    private var hasReachedMax = false
+    private var itemStatus:ItemStatus = .initial
     
-    func getProducts(startIndex: Int = 1, limit:Int = 10) async {
+    func getProducts(limit:Int = 10) async {
         isLoading = true
         if hasReachedMax == true {
             isLoading = false
             return
         }
-        do {
-            if itemStatus == ItemStatus.initial {
-                let responseProducts = await self.fetchItems(startIndex: startIndex, limit: limit)
+        if itemStatus == ItemStatus.initial {
+            let responseProducts = await self.fetchItems(startIndex: 0,limit: limit)
+            DispatchQueue.main.async {
                 self.items = self.items + responseProducts
                 self.isLoading = false
                 self.itemStatus = .success
-            }
+            }            
+        } else {
             let responseProducts = await self.fetchItems(startIndex: items.count, limit: limit)
-            if responseProducts.isEmpty {
-                self.hasReachedMax = true
-            } else {
-                self.items = self.items + responseProducts
-                self.itemStatus = .success
-                self.hasReachedMax = false
+            DispatchQueue.main.async {
+                if responseProducts.isEmpty {
+                    self.hasReachedMax = true
+                } else {
+                    self.items = self.items + responseProducts
+                    self.itemStatus = .success
+                    self.hasReachedMax = false
+                }
+                self.isLoading = false
             }
-            self.isLoading = false
-        }catch {
-            isLoading = false
-            itemStatus = .failure(message: error.localizedDescription)
+            
+            
         }
+        
     }
     private func fetchItems(startIndex:Int, limit:Int) async -> [Item]{
         do {
@@ -54,6 +57,7 @@ class ItemRepository:ObservableObject {
             return try JSONDecoder().decode([Item].self, from: data)
             
         }catch {
+            print(error)
             return []
         }
     }
