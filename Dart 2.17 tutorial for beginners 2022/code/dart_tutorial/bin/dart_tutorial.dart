@@ -5,6 +5,7 @@ import 'package:dart_tutorial/models/car.dart';
 import 'dart:core';
 
 import 'package:dart_tutorial/models/vehicle.dart';
+import 'package:dart_tutorial/repositories/movie_repository.dart';
 
 void main(List<String> arguments) {
   var firstName = 'Nguyen'; //this is a variable
@@ -13,7 +14,8 @@ void main(List<String> arguments) {
   String fullname = '$firstName $lastName';
   print(fullname);
   //multi-line string
-  String poem = '''
+  String poem =
+      '''
     In a dark night,
     With anxious love inflamed,
     Forth unobserved I went, 
@@ -180,5 +182,16 @@ void main(List<String> arguments) {
     print(car);
   });
   //get car's name and add to a separated list
-  
+  List<String> carNames = cars.map((car) => car.name).toList();
+  print(carNames);
+  //key-value objects
+  const Map<String, Object> user = {
+    'name': 'Hoang',
+    'email': 'sunlight4d@gmail.com',
+    'age': 18
+  };
+  //user['name'] = 'Henry';//you can change property of a "final" object
+  //but cannot do that with "const"
+  print(user);
+  fetchMovies();
 }
