@@ -7,15 +7,14 @@ import 'dart:core';
 import 'package:dart_tutorial/models/vehicle.dart';
 import 'package:dart_tutorial/repositories/movie_repository.dart';
 
-void main(List<String> arguments) {
+void main(List<String> arguments) async {
   var firstName = 'Nguyen'; //this is a variable
   String lastName = 'Duc Hoang';
   print('firstname: $firstName, lastname : $lastName');
   String fullname = '$firstName $lastName';
   print(fullname);
   //multi-line string
-  String poem =
-      '''
+  String poem = '''
     In a dark night,
     With anxious love inflamed,
     Forth unobserved I went, 
@@ -193,5 +192,22 @@ void main(List<String> arguments) {
   //user['name'] = 'Henry';//you can change property of a "final" object
   //but cannot do that with "const"
   print(user);
-  fetchMovies();
+  /*
+  print('Begin task1');
+  fetchMovies().then((movies) {
+    print('finished Task1');
+    print('result1 = $movies');
+  });
+  print('Begin task2');
+  fetchMovies().then((movies) {
+    print('finished Task2');
+    print('result2 = $movies');
+  });
+  */
+  print('Begin task1');
+  var result1 = await fetchMovies();
+  print('result1 = $result1');
+  print('Begin task2');
+  var result2 = await fetchMovies();
+  print('result2 = $result2');
 }
