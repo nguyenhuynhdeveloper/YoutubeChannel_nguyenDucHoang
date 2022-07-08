@@ -14,6 +14,6 @@ public class DemoApplication {
 /*
 psql
 \l
-create database test_db
-
+create database test_db;
+\c test_db;
 * */
