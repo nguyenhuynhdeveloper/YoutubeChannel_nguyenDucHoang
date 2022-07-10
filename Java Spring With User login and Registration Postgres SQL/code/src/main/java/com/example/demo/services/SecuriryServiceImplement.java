@@ -16,7 +16,7 @@ import java.util.List;
 @Transactional
 @Slf4j //Simple Logging Facade for Java
 
-public class UserServiceImplement implements UserService{
+public class SecuriryServiceImplement implements SecuriryService{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     @Override
@@ -32,14 +32,15 @@ public class UserServiceImplement implements UserService{
     }
 
     @Override
-    public Role saveRole(Role role) {
+    public Role insertRole(Role role) {
         log.info("saving role: {} to DB", role.getName());
         return roleRepository.save(role);
     }
 
     @Override
-
-    public void addRoleToUser(Role role, User user) {
+    public void addRoleToUser(String roleName, String username) {
+        Role role = roleRepository.findByName(roleName);
+        User user = userRepository.findByUsername(username);
         log.info("add role: {} to user: {}", role.getName(), user.getUsername());
         user.getRoles().add(role);
     }
