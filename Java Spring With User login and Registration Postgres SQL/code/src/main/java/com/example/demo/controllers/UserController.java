@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.User;
-import com.example.demo.services.SecuriryService;
+import com.example.demo.services.UserRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
-    private final SecuriryService securiryService;
+    private final UserRoleService securiryService;
 
     @GetMapping("")
     public ResponseEntity<List<User>> getUsers() {

@@ -1,25 +1,21 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Role;
-import com.example.demo.models.User;
-import com.example.demo.services.SecuriryService;
+import com.example.demo.services.UserRoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/roles")
 @RequiredArgsConstructor
 
 public class RoleController {
-    private final SecuriryService securiryService;
+    private final UserRoleService securiryService;
 
     @PostMapping("/insert")
     public ResponseEntity<Role> insert(@RequestBody Role role) {
-        Role insertedRole = securiryService.insertRole(role);
+        Role insertedRole = securiryService.saveRole(role);
         return ResponseEntity.ok().body(insertedRole);
     }
     @PostMapping("/insertRoleToUser")
