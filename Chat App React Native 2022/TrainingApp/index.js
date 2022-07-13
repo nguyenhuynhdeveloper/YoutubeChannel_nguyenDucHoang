@@ -1,6 +1,24 @@
 /**
 yarn add axios
+yarn add react-native-vector-icons
+yarn add @react-navigation/bottom-tabs
+yarn add @react-navigation/drawer
+yarn add @react-navigation/native
+yarn add @react-navigation/native-stack"
+yarn add firebase
+yarn add moment
+yarn add react-native-chart-kit
+yarn add react-native-gesture-handler
+yarn add react-native-keyboard-aware-scroll-view
+yarn add react-native-reanimated
+yarn add react-native-safe-area-context
+yarn add react-native-screens
+yarn add react-native-vector-icons
+yarn add react-navigation
+yarn add @react-native-async-storage/async-storage
+
 rmdir /s node_modules
+
  */
 import {AppRegistry} from 'react-native'
 import React from 'react';
