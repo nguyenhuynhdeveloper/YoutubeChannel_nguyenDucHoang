@@ -2,7 +2,7 @@
 //  InfiniteListAppApp.swift
 //  InfiniteListApp
 //
-//  Created by Nguyen Duc Hoang on 16/07/2022.
+//  Created by Nguyen Duc Hoang on 21/06/2022.
 //
 
 import SwiftUI
@@ -12,6 +12,7 @@ struct InfiniteListAppApp: App {
     var body: some Scene {
         WindowGroup {
             InfiniteListView()
+            
         }
     }
 }
