@@ -20,8 +20,5 @@ public class User{
     private Long id;
     private String username;
     private String email;
-    private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> roles = new ArrayList<>();
-
+    private String password; //hashed password
 }
