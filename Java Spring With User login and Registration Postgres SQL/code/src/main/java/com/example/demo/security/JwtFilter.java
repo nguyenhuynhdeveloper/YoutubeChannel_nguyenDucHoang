@@ -4,6 +4,9 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.example.demo.services.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +17,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import io.jsonwebtoken.ExpiredJwtException;
 
 @Component
+@Log4j2
 public class JwtFilter extends OncePerRequestFilter {
     @Autowired
-    private JwtUserDetailsService userDetailsService;
+    private UserService userService;
     @Autowired
     private TokenManager tokenManager;
     @Override
@@ -30,17 +34,17 @@ public class JwtFilter extends OncePerRequestFilter {
         if (tokenHeader != null && tokenHeader.startsWith("Bearer ")) {
             token = tokenHeader.substring(7);
             try {
-                username = tokenManager.getUsernameFromToken(token);
+                username = tokenManager.getClaimsFromToken(token).getSubject();
             } catch (IllegalArgumentException e) {
-                System.out.println("Unable to get JWT Token");
+                log.error("Unable to get JWT Token : {}", e.getMessage());
             } catch (ExpiredJwtException e) {
-                System.out.println("JWT Token has expired");
+                log.error("JWT Token has expired : {}", e.getMessage());
             }
         } else {
-            System.out.println("Bearer String not found in token");
+            log.error("Bearer String not found in token");
         }
         if (null != username &&SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = userService.loadUserByUsername(username);
             if (tokenManager.validateJwtToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken
                         authenticationToken = new UsernamePasswordAuthenticationToken(

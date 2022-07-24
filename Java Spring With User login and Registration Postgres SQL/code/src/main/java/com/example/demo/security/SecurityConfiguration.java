@@ -9,10 +9,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
@@ -20,39 +22,20 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration  {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    private final JwtFilter filter;
+    private final JwtAuthenticationEntryPoint authenticationEntryPoint;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-        http.cors()
+        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+        http.csrf()
+                .disable()
+                .authorizeRequests().antMatchers("/login").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/user/info", "/api/foos/**")
-                .hasAuthority("SCOPE_read")
-                .antMatchers(HttpMethod.POST, "/api/foos")
-                .hasAuthority("SCOPE_write")
-                .anyRequest()
-                .authenticated()
+                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
                 .and()
-                .oauth2ResourceServer()
-                .jwt();
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-//        http.authorizeRequests()
-//                .antMatchers("/login").permitAll()
-//                .antMatchers("/users/**", "/settings/**").hasAuthority("Admin")
-////                .hasAnyAuthority("Admin", "Editor", "Salesperson")
-////                .hasAnyAuthority("Admin", "Editor", "Salesperson", "Shipper")
-//                .anyRequest().authenticated()
-//                .and().formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("email")
-//                .permitAll()
-//                .and()
-//                .rememberMe().key("AbcdEfghIjklmNopQrsTuvXyz_0123456789")
-//                .and()
-//                .logout().permitAll();
-
-        http.headers().frameOptions().sameOrigin();
 
         return http.build();
     }
