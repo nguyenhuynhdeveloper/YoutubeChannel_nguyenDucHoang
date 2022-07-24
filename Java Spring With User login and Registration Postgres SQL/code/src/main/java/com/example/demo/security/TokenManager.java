@@ -8,6 +8,7 @@ import java.util.Map;
 
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -19,8 +20,8 @@ import javax.crypto.SecretKey;
 @Component
 public class TokenManager implements Serializable {
     private static final long serialVersionUID = 7008375124389347049L;
-    public static final long TOKEN_VALIDITY = 10 * 60 * 60; @Value("${secret}")
-    private String jwtSecret;
+    public static final long TOKEN_VALIDITY = 10 * 60 * 60;
+    private final String jwtSecret = "Hello, let place something here";
     public String generateJwtToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes());

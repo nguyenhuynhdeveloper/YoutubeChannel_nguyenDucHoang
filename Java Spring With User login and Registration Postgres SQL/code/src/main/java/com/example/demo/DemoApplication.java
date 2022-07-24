@@ -10,14 +10,9 @@ public class DemoApplication {
 	}
 }
 /*
-docker run --name postgres-container \
--it --rm \
--e POSTGRES_PASSWORD=Abc123456789@ \
-postgres \
-psql -h postgres-container -U postgres
-
 docker-compose -f ./postgres-compose.yml up
 docker-compose -f ./postgres-compose.yml down
+pgcli -h localhost -p 5433 -U postgres
 
 psql
 \l
