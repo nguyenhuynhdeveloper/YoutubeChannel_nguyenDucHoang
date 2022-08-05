@@ -27,6 +27,11 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("io.github.microutils:kotlin-logging:2.1.23")
+	implementation("org.springframework.data:spring-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly ("com.h2database:h2")
+
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")

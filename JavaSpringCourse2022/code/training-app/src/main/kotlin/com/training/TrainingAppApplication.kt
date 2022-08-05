@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan
 import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
-@ComponentScan()
+@ComponentScan("com.training")
 @EnableScheduling
 class TrainingAppApplication
 fun main(args: Array<String>) {
