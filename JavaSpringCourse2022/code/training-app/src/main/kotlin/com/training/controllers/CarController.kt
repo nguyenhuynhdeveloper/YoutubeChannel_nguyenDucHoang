@@ -1,5 +1,7 @@
 package com.training.controllers
 
+import com.training.models.Car
+import com.training.repositories.CarRepository
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -10,39 +12,38 @@ internal class CarController(repository: CarRepository) {
         this.repository = repository
     }
     @GetMapping("/cars")
-    fun all(): List<Car> {
+    fun all(): MutableList<Car?> {
         return repository.findAll()
     }
 
     // end::get-aggregate-root[]
     @PostMapping("/cars")
-    fun newCar(@RequestBody newCar: Car?): Car {
+    fun insert(@RequestBody newCar: Car): Car {
         return repository.save(newCar)
     }
 
     // Single item
     @GetMapping("/cars/{id}")
-    fun one(@PathVariable id: Long?): Car {
+    fun find(@PathVariable id: Long): Car? {
         return repository.findById(id)
-            .orElseThrow { CarNotFoundException(id) }
+            .orElseThrow { NoSuchElementException(id) }
     }
 
     @PutMapping("/cars/{id}")
-    fun replaceCar(@RequestBody newCar: Car, @PathVariable id: Long?): Car {
-        return repository.findById(id)
-            .map { Car ->
-                Car.setName(newCar.getName())
-                Car.setRole(newCar.getRole())
-                repository.save(Car)
-            }
-            .orElseGet {
-                newCar.setId(id)
-                repository.save(newCar)
-            }
+    fun update(@RequestBody newCar: Car, @PathVariable id: Long): Car? {
+        val existingCar:Car? = repository.findById(id)?.get();
+        if (existingCar != null) {
+            existingCar.name = newCar.name;
+            existingCar.year = newCar.year;
+            existingCar.engineSize = newCar.engineSize;
+            existingCar.horsePower = newCar.horsePower;
+            repository.save(existingCar);
+        }
+        return  existingCar;
     }
 
     @DeleteMapping("/cars/{id}")
-    fun deleteCar(@PathVariable id: Long?) {
+    fun delete(@PathVariable id: Long) {
         repository.deleteById(id)
     }
 }
