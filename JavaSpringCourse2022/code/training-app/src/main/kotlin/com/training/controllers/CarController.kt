@@ -26,7 +26,7 @@ internal class CarController(repository: CarRepository) {
     @GetMapping("/cars/{id}")
     fun find(@PathVariable id: Long): Car? {
         return repository.findById(id)
-            .orElseThrow { NoSuchElementException(id) }
+            .orElseThrow { NoSuchElementException("${id}") }
     }
 
     @PutMapping("/cars/{id}")
