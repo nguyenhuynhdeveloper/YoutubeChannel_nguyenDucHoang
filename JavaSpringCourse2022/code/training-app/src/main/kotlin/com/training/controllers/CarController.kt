@@ -1,5 +1,6 @@
 package com.training.controllers
 
+import com.training.exceptions.CarNotFoundException
 import com.training.models.Car
 import com.training.repositories.CarRepository
 import org.springframework.web.bind.annotation.*
@@ -23,10 +24,11 @@ internal class CarController(repository: CarRepository) {
     }
 
     // Single item
+    //curl -v localhost:8080/cars/99
     @GetMapping("/cars/{id}")
-    fun find(@PathVariable id: Long): Car? {
-        return repository.findById(id)
-            .orElseThrow { NoSuchElementException("${id}") }
+    fun find(@PathVariable("value=id") carID: Long): Car? {
+        return repository.findById(carID)
+            .orElseThrow { CarNotFoundException(carID) }
     }
 
     @PutMapping("/cars/{id}")
